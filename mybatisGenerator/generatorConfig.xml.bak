@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<classPathEntry location="D:\mybatisGenerator\mybatisGenerator\mysql-connector-java-5.1.25-bin.jar" />
+
+	<context id="DB2Tables" targetRuntime="MyBatis3">
+
+		<!-- 配置mysql 驱动jar包路径.用了绝对路径 -->
+		<commentGenerator>
+			<property name="suppressAllComments" value="true" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+		<!-- 注释控制完毕 -->
+		
+		<!-- 数据库连接 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://10.248.245.42:3305/csc?useUnicode=true&amp;characterEncoding=utf-8" userId="csc" password="Q1W2e3r4">
+		</jdbcConnection>
+
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+ 		<!-- 数据表对应的model 层  -->
+		<javaModelGenerator targetPackage="com.sinopec.crm.rubber.model"
+			targetProject=".">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- sql mapper 隐射配置文件 -->
+		<sqlMapGenerator targetPackage="com.sinopec.crm.rubber.mappers"
+			targetProject=".">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.sinopec.crm.rubber.dao" targetProject=".">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+		
+		 <!-- tableName:用于自动生成代码的数据库表；domainObjectName:对应于数据库表的javaBean类名 --> 
+		<table tableName="csc_sales_area" domainObjectName="CscSalesArea"  enableCountByExample="false"  enableUpdateByExample="false"   enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
+		
+		
+	</context>
+</generatorConfiguration>
